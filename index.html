@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Keystone Construction Co.</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <nav>
+      <a href="#portfolio">PORTAFOLIO</a>
+      <a href="#contact">COTIZAR</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-left">
+
+      <img
+        src="./assets/logo.png"
+        alt="Keystone Logo"
+        class="hero-logo"
+      />
+
+      <h1>
+        KEYSTONE
+        <span>CONSTRUCTION CO.</span>
+      </h1>
+
+      <a href="#contact" class="hero-btn">
+        ¡Contáctanos!
+      </a>
+
+    </div>
+
+    <div class="hero-right">
+      <img
+        src="./assets/hero-building.jpg"
+        alt="Construction Building"
+      />
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+
+    <div class="about-text">
+
+      <h2>Acerca de nosotros</h2>
+
+      <p>
+        Somos una empresa de construcción comprometida con crear espacios
+        funcionales, modernos y de alta calidad.
+      </p>
+
+      <p>
+        Trabajamos en cada proyecto con responsabilidad, atención al detalle
+        y enfoque en las necesidades de nuestros clientes.
+      </p>
+
+    </div>
+
+    <div class="about-image">
+
+      <img
+        src="./assets/about-building.jpg"
+        alt="About Image"
+      />
+
+    </div>
+
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-item">
+        <img src="./assets/project-1.png" alt="">
+        <h3>PROLOGIS 3 Ríos</h3>
+        <p>Edo. de México</p>
+        <p>Dentro de WareMalcomb</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-2.png" alt="">
+        <h3>HINES PIT 4, Guadalajara </h3>
+        <p>Colaboración con WareMalcomb</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-3.png" alt="">
+        <h3>VESTA 3 Naciones, S.L.P.</h3>
+        <p>Dentro de Global Engineering Group</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-4.png" alt="">
+        <h3>AUDI Suppliers Park VESTA, Puebla</h3>
+        <p>Colaboración con WareMalcomb</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-5.png" alt="">
+        <h3>PROLOGIS Cuautitlán, </h3>
+        <p>Edo. de México</p>
+        <p>Dentro de WareMalcomb</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-6.png" alt="">
+        <h3>IMPRO SC/LM,  Villa de Reyes, S.L.P.</h3>
+        <p>Colaboración con Tres Naciones Constructora</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-7.png" alt="">
+        <h3>Metal Technologies S.L.P, Villa de Reyes, S.L.P. </h3>
+        <p>Colaboración con Tres Naciones Constructora</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-8.png" alt="">
+        <h3>MABE Quantum,  Celaya, Guanajuato.</h3>
+        <p>Colaboración con Tres Naciones SAVAL</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-9.png" alt="">
+        <h3>EXPANSION ABM,  San Luis Potosi, S.L.P. </h3>
+        <p>Colaboración con PROMANAGE</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-10.png" alt="">
+        <h3>EL FLORIDO, VESTA,
+</h3>
+<p>Tijuana B.C.N</p>
+        <p>Dentro de WareMalcomb</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-11.png" alt="">
+        <h3>DIAMOND electronic, Tujuana BCN</h3>
+        <p>Dentro de WareMalcomb</p>
+      </div>
+
+      <div class="portfolio-item">
+        <img src="./assets/project-12.png" alt="">
+        <h3>BOSCH AGU111, Aguascalientes</h3>
+        <p>Dentro de WareMalcomb</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+
+    <div class="contact-left">
+      <h2>Cotizar</h2>
+      <p>
+        Complete el formulario y nuestro equipo
+        se pondrá en contacto con usted.
+      </p>
+      <img
+        src="./assets/house.png"
+        alt="House"
+        class="house-image"
+      />
+    </div>
+
+    <!-- Integración con FormSubmit apuntando a tu correo -->
+    <form class="contact-form" action="https://formsubmit.co/keystone.co.construction@gmail.com" method="POST">
+
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" name="Nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label>Correo electrónico</label>
+        <!-- FormSubmit usará este campo para que puedas responderle directamente al cliente -->
+        <input type="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Cuéntanos sobre el trabajo</label>
+        <textarea name="Detalles del Trabajo" rows="5" required></textarea>
+      </div>
+
+      <!-- Configuración extra opcional (Cambia el asunto del correo que recibes) -->
+      <input type="hidden" name="_subject" value="Nueva Cotización - Keystone Web">
+      
+      <!-- Opcional: Desactiva el captcha si prefieres que no le aparezca al usuario -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <button type="submit">
+        Enviar
+      </button>
+
+    </form>
+
+  </section>
+
+  <!-- OFFICE -->
+  <section class="office">
+
+    <div class="office-info">
+
+      <h2>Nuestra Oficina</h2>
+
+      <p>
+        Circuito Alessandria #359<br>
+Col. Villas de San Lorenzo<br>
+C.P. 78433<br>
+Soledad de Graciano Sánchez, San Luis Potosí, México<br><br>
+
+      </p><h3>Construyendo proyectos con calidad y confianza</h3>
+
+    </div>
+
+    <div class="office-map">
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+
+    <div class="footer-grid">
+
+      <div class="footer-logo">
+        <img src="./assets/logo.png" alt="">
+      </div>
+
+      <div class="footer-address">
+        Circuito Alessandria #359<br>
+
+Col. Villas de San Lorenzo<br>
+
+C.P. 78433<br>
+
+Soledad de Graciano Sánchez, San Luis<br>
+Potosí, México
+      </div>
+
+      <div class="footer-contact">
+        Tel: +52 4444918414<br>
+        keystone.co.construction@gmail.com
+      </div>
+
+    </div>
+
+    <div class="copyright">
+      © 2026 Keystone Construction Co.
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
