@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/carousel-images.js": {
+      "includeFiles": "carrousel/img/**"
+    }
+  }
+}
