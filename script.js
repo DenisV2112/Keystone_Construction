@@ -14,6 +14,11 @@ let autoplayInterval = null;
 let isAutoplayActive = true;
 let isDragging = false;
 
+// 🆕 Variables para distinguir un click de un drag
+const CLICK_THRESHOLD = 5;        // px máximos de movimiento para considerarse un click
+let mouseMoveDistance = 0;        // distancia máxima recorrida durante el mousedown actual
+let mouseDownTarget = null;       // elemento exacto donde se hizo mousedown
+
 // Configuración del autoplay
 const AUTOPLAY_SPEED = 2;
 const AUTOPLAY_INTERVAL = 30;
@@ -58,23 +63,19 @@ async function loadCarouselImages() {
   }
 }
 
-// Agregar event listeners a las imágenes para abrir el modal
-// (YA NO se agrega mousedown aquí: el drag se maneja únicamente desde carouselContainer)
+// Preparar las imágenes: desactivar drag nativo y guardar su índice
+// (el modal ahora se abre por click simple desde el container, ver handleMouseUp)
 function addImageClickListeners() {
   const images = carouselInner.querySelectorAll('img');
   images.forEach((img, index) => {
-    // 🔧 Desactivar el drag nativo del navegador (esto es lo que arregla el bug real)
+    // Desactivar el drag nativo del navegador
     img.draggable = false;
     img.addEventListener('dragstart', (e) => e.preventDefault());
 
-    // Doble click para abrir el modal
-    img.addEventListener('dblclick', (e) => {
-      e.stopPropagation();
-      openImageModal(index);
-    });
+    // 🆕 Guardamos el índice en el elemento para poder leerlo luego en handleMouseUp
+    img.dataset.index = index;
 
-    // ❌ ELIMINADO: img.addEventListener('mousedown', startDrag)
-    // El mousedown sobre la imagen llega igualmente al container por bubbling
+    // ❌ Ya no se usa dblclick: el click simple se maneja vía carouselContainer
   });
 }
 
@@ -150,13 +151,17 @@ let onMouseMoveHandler = null;
 let onMouseUpHandler = null;
 
 function startDrag(e) {
-  e.preventDefault(); // evita selección de texto y restos de drag nativo
+  e.preventDefault();
 
   if (modal && !modal.classList.contains('hidden')) return;
   if (isDragging) return;
 
   pressed = true;
   isDragging = true;
+
+  // 🆕 Reiniciar detección de click vs drag
+  mouseMoveDistance = 0;
+  mouseDownTarget = e.target;
 
   dragInitialX = e.clientX;
   dragInitialPosition = parseInt(carouselInner.style.left) || 0;
@@ -179,6 +184,10 @@ function handleMouseMove(e) {
   if (!pressed) return;
 
   const deltaX = e.clientX - dragInitialX;
+
+  // 🆕 Registrar el movimiento máximo para saber si esto fue un click o un drag real
+  mouseMoveDistance = Math.max(mouseMoveDistance, Math.abs(deltaX));
+
   const newPosition = dragInitialPosition + deltaX;
 
   carouselInner.style.left = `${newPosition}px`;
@@ -196,18 +205,36 @@ function handleMouseUp(e) {
   carouselInner.style.transition = 'left 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
   carouselInner.classList.remove('dragging');
 
-  limitCarouselPosition();
-  currentPosition = parseInt(carouselInner.style.left) || 0;
-
   carouselContainer.style.cursor = 'grab';
   document.body.style.cursor = 'auto';
+
+  // 🆕 Si apenas hubo movimiento, fue un click, no un drag
+  if (mouseMoveDistance < CLICK_THRESHOLD) {
+    limitCarouselPosition(); // por seguridad, aunque la posición no debería haber cambiado
+    currentPosition = parseInt(carouselInner.style.left) || 0;
+
+    const clickedImg = mouseDownTarget ? mouseDownTarget.closest('img') : null;
+
+    if (clickedImg) {
+      const index = parseInt(clickedImg.dataset.index, 10);
+      openImageModal(index); // ya pausa el autoplay internamente
+      return; // 🔧 importante: NO reanudar el autoplay mientras el modal está abierto
+    }
+
+    // Click en el carrusel pero fuera de una imagen: comportamiento normal
+    pauseAutoplay();
+    setTimeout(resumeAutoplay, AUTOPLAY_PAUSE_TIME);
+    return;
+  }
+
+  // Comportamiento normal de drag (hubo movimiento real)
+  limitCarouselPosition();
+  currentPosition = parseInt(carouselInner.style.left) || 0;
 
   pauseAutoplay();
   setTimeout(resumeAutoplay, AUTOPLAY_PAUSE_TIME);
 }
 
-// 🔧 Único listener de mousedown para todo el carrusel
-// (recibe los eventos de la imagen también, por bubbling)
 carouselContainer.addEventListener('mousedown', (e) => {
   startDrag(e);
 });
