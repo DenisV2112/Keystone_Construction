@@ -1,0 +1,17 @@
+{
+  "name": "keystone-construction",
+  "version": "1.0.0",
+  "description": "Keystone Construction Co. Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["construction", "keystone"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security"
+  }
+}

@@ -172,6 +172,33 @@
     </div>
 
   </section>
+  <!-- CARROUSEL -->
+  <section class="carousel-section">
+    <h2>Más de Nuestros Proyectos</h2>
+    <div class="carousel-container">
+      <div class="carousel-inner">
+        <!-- Los elementos se cargarán dinámicamente con JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL PARA MOSTRAR IMÁGENES -->
+  <div id="imageModal" class="modal hidden">
+    <div class="modal-content">
+      <span class="modal-close">&times;</span>
+      <button id="modalPrev" class="modal-nav modal-prev" aria-label="Anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <img id="modalImage" src="" alt="Imagen ampliada" class="modal-image">
+      <button id="modalNext" class="modal-nav modal-next" aria-label="Siguiente">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
@@ -266,8 +293,10 @@ Potosí, México
       </div>
 
       <div class="footer-contact">
-        Tel: +52 4444918414<br>
-        keystone.co.construction@gmail.com
+        
+        <a aria-label="Chat on WhatsApp" href="https://wa.me/+524444918414" target="_blank" rel="noopener noreferrer">Tel: +52 4444918414<br></a>
+        <a aria-label="Enviar correo" href="mailto:keystone.co.construction@gmail.com?subject=Consulta%20-%20Keystone%20Construction&body=Hola%20Keystone%2C%0A%0AMe%20gustaría%20conocer%20más%20sobre%20sus%20servicios.%0A%0AGracias">keystone.co.construction@gmail.com</a>
+        
       </div>
 
     </div>
